@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "cypress": "cypress"
+    "cypress": "cypress",
+    "cypress:docker": "docker run -it -v $PWD:/e2e -w /e2e cypress/included:9.2.1 --config baseUrl=http://host.docker.internal:3000,video=false"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -17,7 +18,7 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
-    "cypress": "^9.2.0",
+    "cypress": "^9.2.1",
     "msw": "^0.36.3",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
