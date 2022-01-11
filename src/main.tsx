@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { rest, SetupWorkerApi } from "msw";
 import App from "./App";
 
 import("./mocks/browser").then(({ worker }) => {
@@ -16,6 +15,10 @@ import("./mocks/browser").then(({ worker }) => {
       },
     },
   });
+
+  if (window.Cypress) {
+    window.appReady = true;
+  }
 
   ReactDOM.render(
     <React.StrictMode>

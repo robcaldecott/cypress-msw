@@ -3,13 +3,14 @@ import { DefaultRequestBody, PathParams } from "msw";
 describe("app", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.window().should("have.property", "appReady", true);
   });
 
   it("renders in the loading state", () => {
     cy.findByLabelText(/loading/i).should("exist");
   });
 
-  it.only("renders names", () => {
+  it("renders names", () => {
     cy.window().then((window) => {
       const { worker, rest } = window.msw;
       worker.use(
